@@ -1,0 +1,45 @@
+<h2>🏥 Appointment Dashboard</h2>
+
+<!-- DASHBOARD CARDS -->
+<div style="display:flex; gap:20px; margin-bottom:20px;">
+    <div>🟡 Pending: {{ pending_count }}</div>
+    <div>🟢 Confirmed: {{ confirmed_count }}</div>
+    <div>🔴 Cancelled: {{ cancelled_count }}</div>
+    <div>🔵 Completed: {{ completed_count }}</div>
+</div>
+
+<hr>
+
+<!-- FILTER BUTTONS -->
+<div>
+    <a href="/list/">All</a> |
+    <a href="/list/?status=Pending">Pending</a> |
+    <a href="/list/?status=Confirmed">Confirmed</a> |
+    <a href="/list/?status=Cancelled">Cancelled</a> |
+    <a href="/list/?status=Completed">Completed</a>
+</div>
+
+<hr>
+
+<!-- TABLE -->
+<h3>All Appointments</h3>
+
+<table border="1" cellpadding="8">
+    <tr>
+        <th>Patient</th>
+        <th>Doctor</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Status</th>
+    </tr>
+
+    {% for a in appointments %}
+    <tr>
+        <td>{{ a.patient_name }}</td>
+        <td>{{ a.doctor.name }}</td>
+        <td>{{ a.date }}</td>
+        <td>{{ a.time }}</td>
+        <td>{{ a.status }}</td>
+    </tr>
+    {% endfor %}
+</table>
